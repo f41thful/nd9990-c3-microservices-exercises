@@ -12,3 +12,11 @@ export const config = {
     'secret': process.env.JWT_SECRET,
   },
 };
+
+console.log("---- CONFIG USED ----");
+console.log("db username: " + config.username);
+console.log("db: " + config.database);
+console.log("db host: " + config.host);
+console.log("aws region: " + config.aws_region);
+console.log("aws profile: " + config.aws_profile);
+console.log("aws bucket: " + config.aws_media_bucket);
