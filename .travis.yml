@@ -1,0 +1,13 @@
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+- docker build -t peracc000/udagram-api-feed:v1 ./udagram-api-feed
+- docker push peracc000/udagram-api-feed:v1
+
+- docker build -t peracc000/udagram-api-user:v1 ./udagram-api-user
+- docker push peracc000/udagram-api-user:v1
+
+- docker build -t peracc000/udagram-frontend:v1 ./udagram-frontend
+- docker push peracc000/udagram-frontend:v1
+
+- docker build -t peracc000/reverseproxy:v1 ./udagram-reverseproxy
+- docker push peracc000/reverseproxy:v1
