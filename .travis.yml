@@ -1,13 +1,28 @@
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+language: node_js
+node_js:
+  - 13
 
-- docker build -t peracc000/udagram-api-feed:v1 ./udagram-api-feed
-- docker push peracc000/udagram-api-feed:v1
+services:
+  - docker
 
-- docker build -t peracc000/udagram-api-user:v1 ./udagram-api-user
-- docker push peracc000/udagram-api-user:v1
+# Pre-testing installs
+install:
+  - echo "nothing needs to be installed"
 
-- docker build -t peracc000/udagram-frontend:v1 ./udagram-frontend
-- docker push peracc000/udagram-frontend:v1
+# Scripts to be run such as tests
+before_script:
+  - echo "no tests"
 
-- docker build -t peracc000/reverseproxy:v1 ./udagram-reverseproxy
-- docker push peracc000/reverseproxy:v1
+script:
+  - docker --version # print the version for logging
+  - docker build -t peracc000/udagram-api-feed:v1 ./udagram-api-feed
+  - docker build -t peracc000/udagram-api-user:v1 ./udagram-api-user
+  - docker build -t peracc000/udagram-frontend:v1 ./udagram-frontend
+  - docker build -t peracc000/reverseproxy:v1 ./udagram-reverseproxy
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push peracc000/udagram-api-feed:v1
+  - docker push peracc000/udagram-api-user:v1
+  - docker push peracc000/udagram-frontend:v1
+  - docker push peracc000/reverseproxy:v1
