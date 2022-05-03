@@ -19,3 +19,6 @@ spec:
         image: peracc000/udagram-api-user:v1
         ports:
         - containerPort: 80
+        envFrom:
+          - configMapRef: 
+            name: udagram-config-map
