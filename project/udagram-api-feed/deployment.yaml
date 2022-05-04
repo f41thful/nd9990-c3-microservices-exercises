@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: feed
-        image: peracc000/udagram-api-feed:v1
+        image: peracc000/udagram-api-feed:v2
         ports:
         - containerPort: 8080
         envFrom:
