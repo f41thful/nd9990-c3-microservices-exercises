@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: feed
-        image: peracc000/udagram-api-feed:v2
+        image: peracc000/udagram-api-feed:v3
         resources:
           requests:
             memory: "64Mi"
