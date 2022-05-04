@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: peracc000/udagram-frontend:v1
+        image: peracc000/udagram-frontend:v2
         ports:
         - containerPort: 80
         envFrom:
