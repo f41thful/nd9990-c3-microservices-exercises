@@ -18,4 +18,11 @@ spec:
       - name: frontend
         image: peracc000/udagram-frontend:v1
         ports:
-        - containerPort: 3000
+        - containerPort: 8100
+        envFrom:
+          - configMapRef: 
+              name: udagram-config-map
+          - secretRef:
+              name: udagram-secret
+          - secretRef:
+              name: aws-secret

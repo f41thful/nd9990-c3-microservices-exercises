@@ -1,24 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-deployment
+  name: feed-deployment
   labels:
-    app: user-deployment
+    app: feed-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user
+      app: feed
   template:
     metadata:
       labels:
-        app: user
+        app: feed
     spec:
       containers:
-      - name: user
-        image: peracc000/udagram-api-user:v1
+      - name: feed
+        image: peracc000/udagram-api-feed:v1
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         envFrom:
           - configMapRef: 
-            name: udagram-config-map
+              name: udagram-config-map
+          - secretRef:
+              name: udagram-secret
+          - secretRef:
+              name: aws-secret
