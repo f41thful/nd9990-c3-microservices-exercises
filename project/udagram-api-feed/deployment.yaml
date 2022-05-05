@@ -19,15 +19,15 @@ spec:
         image: peracc000/udagram-api-feed:v3
         resources:
           requests:
-            memory: "64Mi"
+            memory: "2000Mi"
             cpu: "250m"
           limits:
-            memory: "512Mi"
-            cpu: "500m"  
+            memory: "2500Mi"
+            cpu: "500m"
         ports:
         - containerPort: 8080
         envFrom:
-          - configMapRef: 
+          - configMapRef:
               name: udagram-config-map
           - secretRef:
               name: udagram-secret
